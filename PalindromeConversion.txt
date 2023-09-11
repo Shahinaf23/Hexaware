@@ -1,0 +1,57 @@
+Problem:
+Write a program to identify whether the given no. N is a palindrome based on following ooperation
+Add the given no. and its reverse
+check whether it obtained sum after first operation is palindorme or not,if
+not then repeat the above operation.
+The above operation will continue until a palindromic number is found.
+print the palindromic no. as OUTPUT
+
+INPUT:
+100
+OUTPUT:
+101
+
+INPUT:
+195
+OUTPUT:
+9339
+
+CODE:
+import java.io.*;
+import java.util.*;
+class Main
+{
+    public static boolean isPalindrome(int n)
+    {
+        StringBuffer sb1=new StringBuffer(String.valueOf(n));
+        int num1=Integer.parseInt(sb1.reverse().toString());
+        if(n==num1)
+        {
+            return true;
+        }
+        else
+        return false;
+    }
+    public static void main (String[] args) 
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        StringBuffer sb=new StringBuffer(String.valueOf(n));
+        int num=Integer.parseInt(sb.reverse().toString());
+        int sum=n+num;
+        do{
+        if(isPalindrome(sum))
+        {
+           break;
+        }
+        else
+        {
+        StringBuffer sb2=new StringBuffer(String.valueOf(sum));
+        sum=sum+Integer.parseInt(sb2.reverse().toString());
+        }
+        }while(!isPalindrome(sum));
+        System.out.println(sum);
+        
+        
+    }
+}
